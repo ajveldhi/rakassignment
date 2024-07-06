@@ -47,7 +47,7 @@ jobs:
 #          name: webapp-war
 #          path: target/*.war#
 
-#      #- name: Download WAR file
+#      - name: Download WAR file
 #        uses: actions/download-artifact@v3
 #        with:
 #          name: webapp-war
