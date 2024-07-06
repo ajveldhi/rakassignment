@@ -41,21 +41,21 @@ jobs:
           cd demo1
           mvn clean package
 
-      - name: Archive WAR file
-        uses: actions/upload-artifact@v3
-        with:
-          name: webapp-war
-          path: target/*.war
+#      - name: Archive WAR file
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: webapp-war
+#          path: target/*.war#
 
-      - name: Download WAR file
-        uses: actions/download-artifact@v3
-        with:
-          name: webapp-war
-          path: .
+#      #- name: Download WAR file
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: webapp-war
+#          path: .
 
       - name: Copy Dockerfile
         run: |
-          cp Dockerfile .
+          cp Dockerfile dockerfile
 
       - name: Build Docker Image
         run: |
