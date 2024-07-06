@@ -15,7 +15,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Copy demo1.zip (file genereated from start.spring.io)
+<<<<<<< HEAD
         run: cp demo1.zip $HOME/demo.zip
+=======
+        run: |
+          cp demo1.zip demo1.zip
+>>>>>>> e114e57fef88d5fa2fda28ac1d437f79306cda9c
 
       - name: unzip demo1.zip
         run: |
