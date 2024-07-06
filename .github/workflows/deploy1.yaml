@@ -55,10 +55,11 @@ jobs:
 
       - name: Copy Dockerfile
         run: |
-          cp Dockerfile dockerfile
+          cp Dockerfile demo1/dockerfile
 
       - name: Build Docker Image
         run: |
+          cd demo1
           docker build -t my-webapp .
 
       - name: Run Docker Container
