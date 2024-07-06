@@ -16,7 +16,7 @@ jobs:
 
       - name: Copy demo1.zip (file genereated from start.spring.io)
         run: |
-          cp demo1.zip .
+          cp demo1.zip demo1.zip
 
       - name: unzip demo1.zip
         run: |
