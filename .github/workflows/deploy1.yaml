@@ -17,11 +17,11 @@ jobs:
       - name: Copy demo1.zip (file genereated from start.spring.io)
         run: |
             cp demo1.zip $HOME/demo.zip
-            mv demo.zip demo1.zip
+#            mv demo.zip demo1.zip
 
       - name: unzip demo1.zip
         run: |
-          unzip demo1.zip
+          unzip demo.zip
 
       - name: Copy index.jsp to src/main/webapp
         run: |
