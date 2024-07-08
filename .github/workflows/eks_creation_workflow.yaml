@@ -19,8 +19,6 @@ jobs:
 
       - name: Copy EKS files  and Terraform Init
         run: |
-            mkdir eks
-            cp *.tf eks
             cd eks
             terraform init
 
