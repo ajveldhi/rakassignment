@@ -40,6 +40,33 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
+
+    - name: Cache SonarCloud packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+
+    - name: Cache Maven packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: SonarCloud Scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        cd demo1
+        mvn clean verify sonar:sonar \
+        -Dsonar.projectKey=rak_rak \
+        -Dsonar.organization=rak \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
+
       - name: Build with Maven
         run: |
           cd demo1
