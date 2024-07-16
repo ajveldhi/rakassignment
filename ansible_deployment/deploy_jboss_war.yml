@@ -1,0 +1,7 @@
+---
+- name: Deploy WAR file to JBoss AS 6.0.0
+  hosts: localhost
+    ##hosts: jboss_server
+  become: yes
+  roles:
+    - jboss_deploy
