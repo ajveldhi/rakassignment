@@ -1,5 +1,5 @@
 
-name: Build and Deploy WAR to Docker
+name: Build and Deploy WAR to Docker with SonarCloud
 
 # this is working 
 
