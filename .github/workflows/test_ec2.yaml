@@ -1,0 +1,29 @@
+
+name: Test ec2 with creds
+
+# this is working 
+
+#on:
+#  push:
+#    branches:
+#      - main
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  mysql-install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Connect to EC2 with SSH
+        uses: aws-actions/aws-ssh@v3
+        with:
+          ssh-key: ${{ secrets.SSH_KEY }}
+          instance-id: ${{ secrets.EC2_INSTANCE_ID }}
+          region: 'us-east-1'  # Replace with your actual region
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Not recommended for production
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Not recommended for production
+          commands: |
+            ls -l /home/ec2/
