@@ -16,7 +16,9 @@ jobs:
   mysql-install:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out
       - uses: actions/checkout@v3
+      
       - name: Connect to EC2 with SSH
         uses: aws-actions/aws-ssh@v3
         with:
