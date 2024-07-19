@@ -18,12 +18,12 @@ jobs:
         touch /home/runner/.ssh/known_hosts
         echo "#" > ~/.ssh/known_hosts
         ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+        echo ${{ secrets.EC2_SSH_KEY }}  >> /home/runner/ec2_pemfile
 
     - name: Connect to EC2 and list directory
       run: |
-         ssh -i ${{ secrets.EC2_SSH_KEY }}  ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} 'ls -l /home/ec2-user'
-         # ssh -i  /c/terr/terraform/aj-new-us-es-2.pem  ec2-user@18.222.222.145
+         ssh -i /home/runner/ec2_pemfile  ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} 'ls -l /home/ec2-user'
+
 
 #/home/runner/.ssh/known_hosts
-
 # ssh -i  /c/terr/terraform/aj-new-us-es-2.pem  ec2-user@18.222.222.145
