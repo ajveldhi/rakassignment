@@ -1,6 +1,9 @@
 name: Test ec2 with creds 1
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -18,14 +21,19 @@ jobs:
         touch /home/runner/.ssh/known_hosts
         echo "#" > ~/.ssh/known_hosts
         ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
-        cat ~/.ssh/known_hosts
-        #echo ${{ secrets.EC2_SSH_KEY }} 
 
     - name: Connect to EC2 and list directory
-      run: |
-         ssh -i /home/runner/ec2_pemfile  ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} 'ls -l /home/ec2-user'
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          ls -l /home/ec2-user
 
-
+ 
+#         ssh -i /home/runner/ec2_pemfile  ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} 'ls -l /home/ec2-user'
 #/home/runner/.ssh/known_hosts
 # ssh -i  /c/terr/terraform/aj-new-us-es-2.pem  ec2-user@18.222.222.145
 # >> /home/runner/ec2_pemfile
+        #echo ${{ secrets.EC2_SSH_KEY }} 
