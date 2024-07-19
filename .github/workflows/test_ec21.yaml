@@ -11,8 +11,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+
     - name: Add EC2 host to known_hosts
       run: |
+        touch /home/runner/.ssh/known_hosts
+        echo "#" > ~/.ssh/known_hosts
         ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
     - name: Connect to EC2 and list directory
@@ -23,3 +26,6 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           ls -l /home/ec2-user
+
+
+#/home/runner/.ssh/known_hosts
