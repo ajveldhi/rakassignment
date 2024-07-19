@@ -20,13 +20,10 @@ jobs:
         ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
     - name: Connect to EC2 and list directory
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          ls -l /home/ec2-user
-
+      run: |
+         ssh -i ${{ secrets.EC2_SSH_KEY }}  ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} 'ls -l /home/ec2-user'
+         # ssh -i  /c/terr/terraform/aj-new-us-es-2.pem  ec2-user@18.222.222.145
 
 #/home/runner/.ssh/known_hosts
+
+# ssh -i  /c/terr/terraform/aj-new-us-es-2.pem  ec2-user@18.222.222.145
