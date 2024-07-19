@@ -1,9 +1,7 @@
 name: Test ec2 with creds 1
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
