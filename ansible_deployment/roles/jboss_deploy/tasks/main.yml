@@ -13,6 +13,10 @@
 
 - name: Stop JBoss server # this can be run with jboss-cli 
   shell: "/opt/jboss/bin/jboss-cli.sh --connect --controller={{ jboss.host }}:{{ jboss.port }} --command='/shutdown'"
+  become_user: jboss
+  environment:
+    JAVA_HOME: "{{ java_home }}"
+    JBOSS_HOME: "{{ jboss_home }}"
 
 
 - name: Backup current deployment
