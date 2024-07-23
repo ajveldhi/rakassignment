@@ -27,6 +27,7 @@ jobs:
 
       - name: Copy new POM 
         run: |
+          rm -f demo1/pom.xml
           cp pom.xml demo1
 
       - name: Set up JDK 17
@@ -40,11 +41,10 @@ jobs:
           cd demo1
           mvn clean package
 
-      - name: Copy Setting.xml 
-        run: |
-          cp mvn_settings.xml ~/.m2/settings.xml
-
-      - name: Deploy with Maven
+      - name: Publish to GitHub Packages
         run: |
           cd demo1
           mvn deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          
