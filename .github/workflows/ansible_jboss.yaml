@@ -27,7 +27,7 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           ls -l /home/ec2-user
-          sudo sh -x /opt/jboss/ansible_com/rakassignment/ansible_deployment/run_playbook_jboss.sh &
+          su - jboss -c /opt/jboss/ansible_com/rakassignment/ansible_deployment/run_playbook_jboss.sh
           sleep 10
           ps -ef | grep -i jboss
           
