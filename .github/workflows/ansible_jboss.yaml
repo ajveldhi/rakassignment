@@ -1,4 +1,4 @@
-name: Test ec2 with creds 1
+name: Ansible Playbook on EC2
 
 on:
   workflow_dispatch:
