@@ -1,8 +1,9 @@
 ---
-jboss_home: "/opt/jboss-as-6.0.0.Final"
+jboss_home: "/opt/jboss"
 war_file_name: "application.war"
 backup_dir: "/opt/jboss-backup"
-deploy_dir: "{{ jboss_home }}/server/default/deploy"
+deploy_dir: "{{ jboss_home }}/standalone/deployments"
+#deploy_dir: "{{ jboss_home }}/server/default/deploy"
 jboss_service_name: "jboss"
 jboss_cli_path: "{{ jboss_home }}/bin/jboss-cli.sh"
 java_home: "/usr/lib/jvm/java-1.8.0-amazon-corretto.x86_64"
