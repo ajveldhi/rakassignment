@@ -8,6 +8,7 @@
 - name: Stop JBoss service
   shell: "/opt/jboss/bin/jboss-cli.sh --controller=localhost:9990 --connect --command=shutdown"
   become_user: jboss
+  ignore_errors: yes
   environment:
     JAVA_HOME: "{{ java_home }}"
     JBOSS_HOME: "{{ jboss_home }}"
@@ -19,9 +20,7 @@
     remote_src: yes
 
 - name: Remove current WAR file
-  file:
-    path: "{{ deploy_dir }}/{{ war_file_name }}"
-    state: absent
+  shell: "rm -f {{ deploy_dir }}/{{ war_file_name }}*"
 
 - name: Deploy the WAR file
   copy:
@@ -31,9 +30,17 @@
 - name: Create .dodeploy file 
   shell: "touch {{ deploy_dir }}/{{ war_file_name }}.dodeploy"
 
-- name: Stop JBoss service
-  shell: "/opt/jboss/bin/standalone.sh -b 0.0.0.0"
-  environment:
-    JAVA_HOME: "{{ java_home }}"
-    JBOSS_HOME: "{{ jboss_home }}"
+- name: Check all Deployed files  
+  shell: "ls -l  {{ deploy_dir }}/{{ war_file_name }}*"
+  register: ls_output
+
+- name: Display the files listed
+  debug:
+    #var: ls_output.stdout
+    #msg: "{{ ls_output.stdout_lines | join('\n') }}"
+    msg: "{{ ls_output.stdout }}"
+
+- name: Starting the Jboss from shell 
+  command: echo "Starting the Jboss from shell"
+
 

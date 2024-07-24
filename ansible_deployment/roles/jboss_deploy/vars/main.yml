@@ -1,7 +1,7 @@
 ---
 jboss_home: "/opt/jboss"
 war_file_name: "application.war"
-backup_dir: "/opt/jboss-backup"
+backup_dir: "/opt/jboss/jboss-backup"
 deploy_dir: "{{ jboss_home }}/standalone/deployments"
 #deploy_dir: "{{ jboss_home }}/server/default/deploy"
 jboss_service_name: "jboss"
