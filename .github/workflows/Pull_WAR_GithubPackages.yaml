@@ -45,7 +45,7 @@ jobs:
       # Step to build the Docker image
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/rak:webapp .
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/rak:webapp -f Dockerfile_for_Pull .
 
       - name: Run Docker Container
         run: |
