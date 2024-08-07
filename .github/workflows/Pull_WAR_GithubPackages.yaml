@@ -28,12 +28,14 @@ jobs:
           
       - name: check downloaded file 
         run: |
+          sleep 2
           ls -lhtr ~/.m2/repository/com/example1/*
           ls -lthr ~/.m2/repository/com/example1/demo1/*
           echo "---"
           tree ~/.m2/repository/com/example1/*
+          echo "---"
           cp /home/runner/.m2/repository/com/example1/demo1/0.0.1-SNAPSHOT/demo1-0.0.1-SNAPSHOT.war .
-          cat cp /home/runner/.m2/repository/com/example1/demo1/0.0.1-SNAPSHOT/*ies
+          cat /home/runner/.m2/repository/com/example1/demo1/0.0.1-SNAPSHOT/*ies
 
 #/home/runner/.m2/repository/com/example1/demo1/0.0.1-SNAPSHOT
 
