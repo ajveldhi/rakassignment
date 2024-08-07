@@ -35,7 +35,8 @@ jobs:
           tree ~/.m2/repository/com/example1/*
           echo "---"
           cp /home/runner/.m2/repository/com/example1/demo1/0.0.1-SNAPSHOT/demo1-0.0.1-SNAPSHOT.war .
-          cat /home/runner/.m2/repository/com/example1/demo1/0.0.1-SNAPSHOT/*ies
+          ls -lthr *.war
+#          cat /home/runner/.m2/repository/com/example1/demo1/0.0.1-SNAPSHOT/*ies
 
 #/home/runner/.m2/repository/com/example1/demo1/0.0.1-SNAPSHOT
 
