@@ -32,6 +32,7 @@ jobs:
           ls -lthr ~/.m2/repository/com/example1/demo1/*
           echo "---"
           tree ~/.m2/repository/com/example1/*
+          cp /home/runner/.m2/repository/com/example1/demo1/demo1-0.0.1-SNAPSHOT.war .
 
 #      - name: Verify package
 #        run: ls -la ~/.m2/repository/groupId/artifactId/version # Adjust path based on package groupId, artifactId, and version
