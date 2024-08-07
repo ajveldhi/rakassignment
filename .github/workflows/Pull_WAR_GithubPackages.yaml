@@ -1,4 +1,4 @@
-name: Build and Deploy WAR to Github Packages
+name: Pull WAR to Github Packages
 
 on:
   workflow_dispatch:
@@ -19,12 +19,6 @@ jobs:
         run: |
           unzip demo.zip
 
-      - name: Copy index.jsp to src/main/webapp
-        run: |
-          cd demo1
-          mkdir -p src/main/webapp
-          cp ../index.jsp src/main/webapp/index.jsp
-
       - name: Copy new POM 
         run: |
           rm -f demo1/pom.xml
@@ -36,11 +30,6 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Build with Maven
-        run: |
-          cd demo1
-          mvn clean package
-
       - name: Publish to GitHub Packages
         run: |
           cd demo1
@@ -48,3 +37,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
           
+
+      - name: Pull Maven package
+        run: mvn dependency:get -Dartifact=groupId:artifactId:version
+
+      - name: Verify package
+        run: ls -la ~/.m2/repository/groupId/artifactId/version # Adjust path based on package groupId, artifactId, and version
