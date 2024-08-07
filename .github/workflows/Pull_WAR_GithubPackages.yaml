@@ -28,11 +28,13 @@ jobs:
           
       - name: check downloaded file 
         run: |
-          ls -ltr ~/.m2/repository/com/example1/*
+          ls -lhtr ~/.m2/repository/com/example1/*
+          ls -lthr ~/.m2/repository/com/example1/demo1/*
+          echo "---"
           tree ~/.m2/repository/com/example1/*
 
-      - name: Verify package
-        run: ls -la ~/.m2/repository/groupId/artifactId/version # Adjust path based on package groupId, artifactId, and version
+#      - name: Verify package
+#        run: ls -la ~/.m2/repository/groupId/artifactId/version # Adjust path based on package groupId, artifactId, and version
 
 #      - name: Pull Maven package
 #        run: mvn dependency:get -Dartifact=groupId:artifactId:version
