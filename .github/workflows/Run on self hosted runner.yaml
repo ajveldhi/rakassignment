@@ -1,0 +1,19 @@
+name: Run on self hosted runner 
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  runs-on-self-hosted:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Copy demo1.zip (file genereated from start.spring.io)
+        run: |
+            docker ps -a 
