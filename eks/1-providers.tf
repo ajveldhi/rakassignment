@@ -11,4 +11,24 @@ terraform {
       version = "~> 5.49"
     }
   }
+
+  backend "s3" {
+    bucket         = "11my-terraform-state-bucket"
+    key            = "path/to/my/terraform.tfstate"
+    region         = "us-east-2"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+
 }
+
+#terraform {
+#  backend "s3" {
+#    bucket         = "my-terraform-state-bucket"
+#    key            = "path/to/my/terraform.tfstate"
+#    region         = "us-west-2"
+#    dynamodb_table = "terraform-locks"
+#    encrypt        = true
+#  }
+#}
+
