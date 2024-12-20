@@ -2,6 +2,9 @@ name: Create EKS Cluster
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   terraform:
@@ -36,7 +39,7 @@ jobs:
       - name: Terraform Apply
         run: |
             cd eks
-            terraform apply -auto-approve tfplan
+#            terraform apply -auto-approve tfplan
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
