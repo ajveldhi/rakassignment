@@ -13,6 +13,7 @@ terraform {
     }
   }
 
+# backend 
   backend "s3" {
     bucket         = "11my-terraform-state-bucket"
     key            = "path/to/my/terraform.tfstate"
@@ -22,3 +23,6 @@ terraform {
   }
 
 }
+
+
+##  
